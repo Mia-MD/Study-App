@@ -1,6 +1,11 @@
+@font-face {
+    font-family: lazyDog;
+    src: url("./Lazydog.otf");
+}
+
 * {
-    font-family: "Cherry Bomb One", system-ui;
-    font-weight: 400;
+    font-family: lazyDog, sans-serif;
+    font-weight: 600;
     font-style: normal;
     color: #6367ff;
 }
@@ -10,11 +15,11 @@ body {
     background-size: cover;
     text-align: center;
     user-select: none;
-    app-region: drag;
+    /* app-region: drag; */
 }
 
 h1 {
-        font-size: 50px;
+    font-size: 50px;
 }
 
 .menu {
@@ -70,4 +75,8 @@ h1 {
         scale: 1.07;
         transition: 100ms ease;
     }
+}
+
+.back-btn {
+    left: 40px;
 }
