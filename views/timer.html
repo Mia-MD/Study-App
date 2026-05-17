@@ -1,18 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Study App</title>
-    <link rel="stylesheet" href="../public/styles.css" />
-</head>
-<body>
+    <link rel="stylesheet" href="../public/styles/timer.css" />
+  </head>
+  <body>
     <div>
-        <button class="quit-btn" id="quit-btn">X</button>
-        <a href="../index.html" class="quit-btn back-btn" id="back-btn"><</a>
-        <h1>Timer</h1>
+      <button class="quit-btn" id="quit-btn">X</button>
+      <a href="../index.html" class="quit-btn back-btn" id="back-btn"><</a>
+
+      <div class="timer-container">
+        <div class="timer-title">
+            <h1 id="time-remaining">Timer</h1>
+            <h2 class="total-time">/0:10</h2>
+        </div>
+        
+        <div class="timer-countdown">
+          <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
+            <circle
+              cx="100"
+              cy="100"
+              r="85"
+              stroke="#6367ff"
+              stroke-width="20"
+              fill="none"
+            />
+            <circle
+              id="progress-circle"
+              class="progress"
+              cx="100"
+              cy="100"
+              r="85"
+              stroke="#c9beff"
+              stroke-width="20"
+              fill="none"
+              stroke-dasharray="534.1"
+              stroke-dashoffset="534.1"
+            />
+          </svg>
+        </div>
+        <div class="timer-controls">
+          <button id="start-btn" class="menu-btn">Start</button>
+          <button id="pause-btn" class="menu-btn">Pause</button>
+          <button id="reset-btn" class="menu-btn">Reset</button>
+        </div>
+      </div>
     </div>
     <script src="../scripts/script.js"></script>
     <script src="../scripts/timer.js"></script>
-</body>
+  </body>
 </html>
