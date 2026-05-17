@@ -22,6 +22,10 @@ h1 {
     font-size: 50px;
 }
 
+a {
+    text-decoration: none;
+}
+
 .menu {
     margin-top: 50px;
     display: flex;
