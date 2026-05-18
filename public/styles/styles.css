@@ -20,8 +20,10 @@ body {
 
 button,
 a,
+input,
 .menu,
-.menu * {
+.menu *,
+.timer-container {
     -webkit-app-region: no-drag;
 }
 
@@ -90,4 +92,12 @@ a {
 
 .back-btn {
     left: 40px;
+}
+
+.hidden {
+    display: none;
+}
+
+.hide-visbility {
+    visibility: hidden;
 }

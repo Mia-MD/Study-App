@@ -43,6 +43,33 @@ svg {
     font-size: 22px;
 }
 
-/* .progress {
-    transition: stroke-dashoffset 1s linear;
-} */
+input[type="number"] {
+    width: 80px;
+    font-size: 46px;
+    background-color: transparent;
+    color:#6367ff;
+    border: none;
+    text-align: center;
+    caret-color: transparent;
+    cursor:default;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    
+    &::placeholder {
+        color: #6367ff;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+label {
+    font-size: 46px;
+    color: #6367ff;
+    /* margin: 0 5px; */
+}

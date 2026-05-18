@@ -1,12 +1,16 @@
 const timer = document.getElementById("time-remaining");
 const progress = document.getElementById("progress-circle");
+const totalTimeDisplay = document.getElementById("total-time");
+const hoursInput = document.getElementById("hours-input");
+const minutesInput = document.getElementById("minutes-input");
+const secondsInput = document.getElementById("seconds-input");
 const startBtn = document.getElementById("start-btn");
 const pauseBtn = document.getElementById("pause-btn");
 const resetBtn = document.getElementById("reset-btn");
 
 const sound = new Audio('../public/sounds/timer.mp3');
 
-const totalTimeSec = 10; 
+let totalTimeSec = 0; 
 const RADIUS = 85;
 const circumference = 2 * Math.PI * RADIUS;
 
@@ -28,7 +32,7 @@ function formatTime(remainingSeconds) {
 
 function updateFrame(timestamp) {
     if (startTime === null) startTime = timestamp;
-    
+
     const elapsedTime = (timestamp - startTime) / 1000;
     const remaining = Math.max(totalTimeSec - elapsedTime, 0);
     const progressPercent = Math.min(elapsedTime / totalTimeSec, 1);
@@ -41,6 +45,9 @@ function updateFrame(timestamp) {
     } else {
         animationFrameId = null;
         sound.play();
+        timer.textContent = "Time's up!";
+        pauseBtn.classList.add("hidden");
+        totalTimeDisplay.classList.add("hide-visbility");
     }
 }
 
@@ -53,7 +60,18 @@ function startTimer() {
     } else {
         startTime = null; // will be set on first frame
     }
+    const hoursSec = parseInt(hoursInput.value) * 3600 || 0;
+    const minutesSec = parseInt(minutesInput.value) * 60 || 0;
+    const seconds = parseInt(secondsInput.value) || 0;
+    totalTimeSec = hoursSec + minutesSec + seconds;
+    totalTimeDisplay.textContent = `/${formatTime(totalTimeSec)}`;
+
     animationFrameId = requestAnimationFrame(updateFrame);
+    document.getElementById("total-time").classList.remove("hidden");
+    document.getElementById("timer-select").classList.add("hidden");
+    startBtn.classList.add("hidden");
+    pauseBtn.classList.remove("hidden");
+    resetBtn.classList.remove("hidden");
 }
 
 function pauseTimer() {
@@ -64,6 +82,9 @@ function pauseTimer() {
     animationFrameId = null;
     const now = performance.now();
     pauseTime = (now - startTime) / 1000;
+    pauseBtn.classList.add("hidden");
+    startBtn.classList.remove("hidden");
+    startBtn.textContent = "Resume";
 }
 
 function resetTimer() {
@@ -78,6 +99,18 @@ function resetTimer() {
 
     if (timer) timer.textContent = formatTime(totalTimeSec);
     if (progress) progress.style.strokeDashoffset = circumference;
+
+    document.getElementById("timer-select").classList.remove("hidden");
+    document.getElementById("total-time").classList.add("hidden");
+    startBtn.classList.remove("hidden");
+    resetBtn.classList.add("hidden");
+
+    startBtn.textContent = "Start";
+    timer.textContent = "Timer";
+
+    hoursInput.value = "";
+    minutesInput.value = "";
+    secondsInput.value = "";
 }
 
 if (startBtn) startBtn.addEventListener("click", startTimer);
