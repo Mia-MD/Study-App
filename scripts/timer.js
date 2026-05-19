@@ -25,9 +25,13 @@ if (progress) {
 
 function formatTime(remainingSeconds) {
   const clamped = Math.max(0, Math.ceil(remainingSeconds));
-  const minutes = Math.floor(clamped / 60);
+  const hours = Math.floor(clamped / 3600);
+  const minutes = Math.floor((clamped % 3600) / 60);
   const seconds = clamped % 60;
-  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+  if (hours === 0) {
+    return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+  }
+  return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 }
 
 function updateFrame(timestamp) {
@@ -64,7 +68,10 @@ function startTimer() {
     const minutesSec = parseInt(minutesInput.value) * 60 || 0;
     const seconds = parseInt(secondsInput.value) || 0;
     totalTimeSec = hoursSec + minutesSec + seconds;
+    totalTimeDisplay.classList.remove("hide-visbility");
     totalTimeDisplay.textContent = `/${formatTime(totalTimeSec)}`;
+
+    if(totalTimeSec <=0) return;
 
     animationFrameId = requestAnimationFrame(updateFrame);
     document.getElementById("total-time").classList.remove("hidden");
