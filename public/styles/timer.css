@@ -30,7 +30,6 @@ svg {
     h2 {
         margin-top: 0px;
     }
-    
 }
 
 .timer-controls {
@@ -47,24 +46,29 @@ input[type="number"] {
     width: 80px;
     font-size: 46px;
     background-color: transparent;
-    color:#6367ff;
+    color:rgb(99, 103, 255);
     border: none;
     text-align: center;
     caret-color: transparent;
     cursor:default;
+    
+    &:focus {
+        outline: none;
+    }
+
+    &::placeholder {
+        color: #6367ff;
+    }
+
+    &::selection {
+        background: transparent;
+        color: rgb(99, 103, 255, 0.8);
+    }
 
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
-    }
-    
-    &::placeholder {
-        color: #6367ff;
-    }
-
-    &:focus {
-        outline: none;
     }
 }
 

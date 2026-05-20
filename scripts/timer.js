@@ -111,15 +111,33 @@ function resetTimer() {
     document.getElementById("total-time").classList.add("hidden");
     startBtn.classList.remove("hidden");
     resetBtn.classList.add("hidden");
+    pauseBtn.classList.add("hidden");
 
     startBtn.textContent = "Start";
     timer.textContent = "Timer";
 
-    hoursInput.value = "";
-    minutesInput.value = "";
-    secondsInput.value = "";
+    hoursInput.value = "00";
+    minutesInput.value = "00";
+    secondsInput.value = "00";
 }
 
 if (startBtn) startBtn.addEventListener("click", startTimer);
 if (pauseBtn) pauseBtn.addEventListener("click", pauseTimer);
 if (resetBtn) resetBtn.addEventListener("click", resetTimer);
+
+// When a number input receives focus, select its content so typing replaces it.
+const numberInputs = [hoursInput, minutesInput, secondsInput].filter(Boolean);
+numberInputs.forEach((input) => {
+    input.addEventListener("focus", (e) => {
+        e.target.select();
+    });
+
+    // Prevent mouseup from deselecting selection when clicking to focus
+    input.addEventListener("mousedown", (e) => {
+        if (document.activeElement !== e.target) {
+            e.preventDefault();
+            e.target.focus();
+            e.target.select();
+        }
+    });
+});
