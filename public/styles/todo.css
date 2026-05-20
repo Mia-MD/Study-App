@@ -1,1 +1,45 @@
 @import url('./styles.css');
+
+input[type="radio"] {
+    height: 40px;
+    width: 40px;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(99, 103, 255, 0.7);;
+    /*Make it transparent only border*/
+}
+
+/*Does this do what i want*/
+h1 {
+    position:sticky;
+}
+
+.todo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:fit-content;
+    
+    .task-text {
+        color: white;
+        font-size: 24px;
+        text-decoration: underline;
+        margin-left: 5px;
+    }
+}
+
+.new-task-btn {
+    width: 140px; 
+    padding: 2px;
+    color: white;
+    font-size: 18px;
+    padding: 0;
+}
