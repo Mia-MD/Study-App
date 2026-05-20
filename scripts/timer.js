@@ -51,7 +51,7 @@ function updateFrame(timestamp) {
         sound.play();
         timer.textContent = "Time's up!";
         pauseBtn.classList.add("hidden");
-        totalTimeDisplay.classList.add("hide-visbility");
+        totalTimeDisplay.classList.add("hide-visibility");
     }
 }
 
@@ -68,7 +68,7 @@ function startTimer() {
     const minutesSec = parseInt(minutesInput.value) * 60 || 0;
     const seconds = parseInt(secondsInput.value) || 0;
     totalTimeSec = hoursSec + minutesSec + seconds;
-    totalTimeDisplay.classList.remove("hide-visbility");
+    totalTimeDisplay.classList.remove("hide-visibility");
     totalTimeDisplay.textContent = `/${formatTime(totalTimeSec)}`;
 
     if(totalTimeSec <=0) return;
