@@ -44,6 +44,7 @@ svg {
 
 input[type="number"] {
     width: 80px;
+    height: 50px;
     font-size: 46px;
     background-color: transparent;
     color:rgb(99, 103, 255);
@@ -51,8 +52,16 @@ input[type="number"] {
     text-align: center;
     caret-color: transparent;
     cursor:default;
+    transition: all ease 0.3s;
     
+    &:hover {
+        cursor: pointer;
+        color: rgb(99, 103, 255, 0.9);
+        transform: scale(1.04);
+    }
+
     &:focus {
+        transform: scale(1.04);
         outline: none;
     }
 
