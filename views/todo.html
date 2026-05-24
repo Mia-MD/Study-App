@@ -1,32 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Study App</title>
     <link rel="stylesheet" href="../public/styles/todo.css" />
-</head>
-<body>
+  </head>
+  <body>
     <div>
-        <button class="quit-btn" id="quit-btn">X</button>
-        <a href="../index.html" class="quit-btn back-btn" id="back-btn"><<</a>
-        <h1>To Do</h1>
+      <button class="quit-btn" id="quit-btn">X</button>
+      <a href="../index.html" class="quit-btn back-btn" id="back-btn"><<</a>
+      <h1>To Do</h1>
     </div>
 
-    <!-- This would be so much easier if it was a ejs file, consider changing it to that-->
-    <div class="todo-container">
-        <button class="menu-btn new-task-btn">+ New task</button>
-        <div class="menu-btn task">
-            <input type="radio" class="">
-            <p class="task-text">Task 1 example</p>
+    <div id="todo-list" class="todo-container">
+      <button class="menu-btn new-task-btn" onclick="displayNewTask()">
+        + New task
+      </button>
+      <div id="new-task" class="menu-btn task hidden">
+        <div>
+          <input id="new-task-text" type="text" placeholder="New task" />
+          <hr />
         </div>
-        <div class="menu-btn task">
-            <input type="radio" class="">
-            <p class="task-text">Task 1 example</p>
-        </div>
+        <button id="add-new-task" onclick="createTask()">+</button>
+      </div>
     </div>
 
     <script src="../scripts/script.js"></script>
     <script src="../scripts/todo.js"></script>
-</body>
+  </body>
 </html>
